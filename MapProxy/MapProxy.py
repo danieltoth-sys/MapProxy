@@ -475,3 +475,9 @@ def assert_no_cache(resp):
     assert resp.headers["Pragma"] == "no-cache"
     assert resp.headers["Expires"] == "-1"
     assert resp.cache_control.no_store == True
+
+
+def assert_if_cache_full(resp):
+    assert resp.headers["Pragma"] == "full-cache"
+    assert resp.headers["Expires"] == "60"
+    assert resp.cache_control.no_store == False
